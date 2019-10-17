@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>drone_280.jpg</filename>
+	<path>C:\Users\Suyeon Jin\Anaconda3\envs\labelimg\imageset\Object-Detection\train\drone_280.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>6850</width>
+		<height>3456</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>drone</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1077</xmin>
+			<ymin>464</ymin>
+			<xmax>6782</xmax>
+			<ymax>2896</ymax>
+		</bndbox>
+	</object>
+</annotation>
