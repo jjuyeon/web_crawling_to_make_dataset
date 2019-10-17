@@ -65,7 +65,7 @@ def get(maxcount, searchterm, folder):
         try:  # 구글 이미지를 읽고 저장한다.
             req = urllib.request.Request(img, headers = header)
             raw_img = urllib.request.urlopen(req).read()
-            File = open(os.path.join(folder , searchterm + "_" + str(counter) + "." + imgtype), "wb")
+            File = open(os.path.join(folder , searchterm + "_" + str(succounter+1) + "." + imgtype), "wb")
             File.write(raw_img)
             File.close()
             succounter = succounter + 1
@@ -79,7 +79,7 @@ def get(maxcount, searchterm, folder):
     print("**** Running time **** :", round((stop - start)/60, 6))  # 현재시각 - 시작시간 = 실행 시간(단위: 분)
 
 
-# In[6]:
+# In[3]:
 
 
 # firefox 브라우저 열기 위한 세팅
@@ -87,7 +87,7 @@ binary=FirefoxBinary('C:/Program Files/Mozilla Firefox/firefox.exe')
 browser=webdriver.Firefox(executable_path='C:\\Users\Suyeon Jin\AppData\Local\Programs\Python\geckodriver.exe',firefox_binary=binary)
 
 
-# In[7]:
+# In[4]:
 
 
 searchterm = 'drone'
@@ -99,6 +99,43 @@ if not os.path.exists(folder):
 # 이미지 get(500장 수집)
 maxcount = 500
 get(maxcount, searchterm, folder)
+
+
+# In[5]:
+
+
+train = folder+'/train/'
+if not os.path.exists(train):
+    os.mkdir(train)
+
+test = folder+'/test/'
+if not os.path.exists(test):
+    os.mkdir(test)
+
+
+# In[9]:
+
+
+# test/train 나누기
+import shutil
+
+for i in range (1,451):
+    filename = searchterm+ "_" + str(i) + ".jpg"
+    src = folder+'/'
+    dir = train
+    try:
+        shutil.move(src+filename, dir+filename)
+    except:
+        print(filename,"이 존재하지 않음.")
+        
+for i in range(451,501):
+    filename = searchterm+ "_" + str(i) + ".jpg"
+    src = folder+'/'
+    dir = test
+    try:
+        shutil.move(src+filename, dir+filename)
+    except:
+        print(filename,"이 존재하지 않음.")
 
 
 # In[ ]:
